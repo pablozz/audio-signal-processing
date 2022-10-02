@@ -22,14 +22,14 @@ def read_wav(file_name):
         channels_no = data.shape[1]
     except:
         channels_no = 1
-    length = data.shape[0] / sample_rate
-    return channels_no, length, data
+    time_length = data.shape[0] / sample_rate
+    return channels_no, time_length, data
 
 
-def plot(channels_count, length, data, marker_time):
-    time = np.linspace(0, length - 1, data.shape[0])
+def plot(channels_count, time_length, data, marker_time):
+    time = np.linspace(0, time_length - 1, data.shape[0])
     for channel_index in range(channels_count):
-        plt.figure(channel_index, figsize=(7, 5))
+        plt.figure(channel_index)
         plt.plot(time,
                  get_dimension(data, channel_index),
                  label=f"channel #{channel_index}")
